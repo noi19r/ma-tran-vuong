@@ -6,7 +6,7 @@ using namespace std;
 string numberToString(int num)
 {
     string result;
-    string onesPlace[] = {"", "mot", "hai", "ba", "", "nam", "sau", "bay", "tam", "chin"};
+    string onesPlace[] = {"lẻ", "mot", "hai", "ba", "", "nam", "sau", "bay", "tam", "chin"};
     string tensPlace[] = {"", "muoi", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi"};
     if (num >= 1000000) {
         result += numberToString(num / 1000000) + " trieu ";
