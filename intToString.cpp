@@ -24,6 +24,8 @@ string numberToString(int num)
         result += tensPlace[num / 10] + " ";	
         num %= 10;
     }
+    else
+        result += onesPlace[num] + " ";
     if (num > 0) {
         result += onesPlace[num];
     }
