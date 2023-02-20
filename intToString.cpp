@@ -4,12 +4,12 @@ using namespace std;
 
 const string ones[] = {"khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"};
 const string teens[] = {"muoi", "muoi mot", "muoi hai", "muoi ba", "muoi bon", "muoi lam", "muoi sau", "muoi bay", "muoi tam", "muoi chin"};
-const string tens[] = {"", "", "hai muoi", "ba muoi", "ban muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi"};
+const string tens[] = {"", "", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi"};
 const string powers[] = {"", "nghin", "trieu" , "ty" , "nghin ty" , "trieu ty"};
 
 
 
-string convertThreeDigits(int num, bool flag)
+string convertThreeDigits(long long num, bool flag)
 {	
    
     string result;
@@ -43,14 +43,15 @@ string convertThreeDigits(int num, bool flag)
     return result;
 }
 
-string numberToWords(long num) {
+string numberToWords(long long num) {
+	
     if (num == 0) {
         return "khong";
     }
     string words = "";
     int i = 0;
     while (num > 0) {
-        int threeDigits = num % 1000;
+        long long threeDigits = num % 1000;
         num /= 1000;
         if (threeDigits > 0 ) {
             words = convertThreeDigits(threeDigits, num !=0) + powers[i] + " " + words;
@@ -61,7 +62,7 @@ string numberToWords(long num) {
 }
 
 int main() {
-    int n;
+    long long n;
     cout << "Nhap vao so nguyen duong n: ";
     cin >> n;
     if (n < 0) {
