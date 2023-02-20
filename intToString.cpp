@@ -15,10 +15,13 @@ string convertThreeDigits(long long num, bool flag)
     string result;
     if(num <10)
     	return  (flag ? "khong tram le " : "") + ones[num] + " ";
+    long long check = num % 100;
     if (num >= 100) {
         result += ones[num / 100] + " tram ";
         num %= 100;
     }
+    if(flag && check < 100 && check > 10 )
+    	result += "khong tram " ;
     if (num >= 10) {
         if (num >= 20  ) {
             result += tens[num / 10] + " ";
