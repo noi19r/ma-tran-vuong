@@ -2,18 +2,19 @@
 #include <string>
 using namespace std;
 
-const string ones[] = {"", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"};
+const string ones[] = {"khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"};
 const string teens[] = {"muoi", "muoi mot", "muoi hai", "muoi ba", "muoi bon", "muoi lam", "muoi sau", "muoi bay", "muoi tam", "muoi chin"};
 const string tens[] = {"", "", "hai muoi", "ba muoi", "ban muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi"};
-const string powers[] = {"", "nghin", "trieu" , "ty"};
+const string powers[] = {"", "nghin", "trieu" , "ty" , "nghin ty" , "trieu ty"};
 
 
 
-string convertThreeDigits(int num)
-{
+string convertThreeDigits(int num, bool flag)
+{	
+   
     string result;
     if(num <10)
-    	return  ones[num] + " ";
+    	return  (flag ? "khong tram le " : "") + ones[num] + " ";
     if (num >= 100) {
         result += ones[num / 100] + " tram ";
         num %= 100;
@@ -21,14 +22,16 @@ string convertThreeDigits(int num)
     if (num >= 10) {
         if (num >= 20  ) {
             result += tens[num / 10] + " ";
-            
             num %= 10;
            
             if ( num  > 0 ) {
-                result +=  ones[num] + " ";
+            
+                result +=  ( num == 5 ? "lam" : ones[num] ) + " ";
+                
             }
         } else {
             result += teens[num - 10] + " ";
+           
         }
     } else if (num > 0) {
     	  
@@ -40,7 +43,7 @@ string convertThreeDigits(int num)
     return result;
 }
 
-string numberToWords(long long num) {
+string numberToWords(long num) {
     if (num == 0) {
         return "khong";
     }
@@ -50,7 +53,7 @@ string numberToWords(long long num) {
         int threeDigits = num % 1000;
         num /= 1000;
         if (threeDigits > 0 ) {
-            words = convertThreeDigits(threeDigits) + powers[i] + " " + words;
+            words = convertThreeDigits(threeDigits, num !=0) + powers[i] + " " + words;
         }
         i++;
     }
